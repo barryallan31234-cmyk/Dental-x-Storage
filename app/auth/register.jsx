@@ -96,8 +96,15 @@ export default function RegisterScreen() {
       },
     ];
 
+    const saved = await saveRegisteredUsers(nextUsers);
+
+    if (!saved) {
+      setLoading(false);
+      Alert.alert("Error", "Could not save your account. Please try again.");
+      return;
+    }
+
     REGISTERED_USERS = nextUsers;
-    await saveRegisteredUsers(nextUsers);
 
     setTimeout(() => {
       setLoading(false);

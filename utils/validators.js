@@ -1,3 +1,6 @@
+const sameEmail = (a, b) =>
+  String(a).trim().toLowerCase() === String(b).trim().toLowerCase();
+
 export const isValidEmail = (email) => {
   if (!email || typeof email !== "string") {
     return false;
@@ -60,7 +63,7 @@ export const validateRegister = (
   }
 
   const exists = registeredUsers.find(
-    (user) => user.email === email.trim()
+    (user) => sameEmail(user.email, email)
   );
 
   if (exists) {
@@ -96,13 +99,13 @@ export const validateLogin = (
 
   const user = registeredUsers.find(
     (user) =>
-      user.email === email.trim() &&
+      sameEmail(user.email, email) &&
       user.password === password
   );
 
   if (!user) {
     const emailExists = registeredUsers.find(
-      (user) => user.email === email.trim()
+      (user) => sameEmail(user.email, email)
     );
 
     if (emailExists) {
@@ -143,7 +146,7 @@ export const validateForgot = (
   }
 
   const exists = registeredUsers.find(
-    (user) => user.email === email.trim()
+    (user) => sameEmail(user.email, email)
   );
 
   if (!exists) {
@@ -193,7 +196,7 @@ export const validateResetPassword = (
   }
 
   const exists = registeredUsers.find(
-    (user) => user.email === email.trim()
+    (user) => sameEmail(user.email, email)
   );
 
   if (!exists) {

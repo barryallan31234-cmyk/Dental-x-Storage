@@ -2,11 +2,16 @@
   "expo": {
     "name": "bisaya",
     "slug": "snack-f248ac37-89a9-4e11-9a68-78fa726ffecc",
+    "scheme": "bisaya",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
