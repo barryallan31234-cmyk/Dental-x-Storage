@@ -1,6 +1,7 @@
 ﻿import { useState } from "react";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { showAlert } from "../../utils/notify.js";
 
 import {
   Alert,
@@ -50,7 +51,7 @@ export default function LoginScreen() {
     const liveUsers = await readRegisteredUsers();
     const check = validateLogin(email, password, liveUsers);
     if (!check.valid) {
-      Alert.alert("Login", check.message);
+      showAlert("Login", check.message);
       return;
     }
 

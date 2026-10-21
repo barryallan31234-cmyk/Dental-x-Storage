@@ -1,6 +1,7 @@
 ﻿import { useState } from "react";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { showAlert } from "../../utils/notify.js";
 
 import {
   Alert,
@@ -34,12 +35,12 @@ export default function ForgotScreen() {
     const check = validateForgot(email, liveUsers);
 
     if (!check.valid) {
-      Alert.alert("Check", check.message);
+      showAlert("Check", check.message);
       return;
     }
 
     setPhase("reset");
-    Alert.alert("Account found", "Set a new password for this account.");
+    showAlert("Account found", "Set a new password for this account.");
   };
 
   const handleReset = async () => {
@@ -52,7 +53,7 @@ export default function ForgotScreen() {
     );
 
     if (!check.valid) {
-      Alert.alert("Reset Password", check.message);
+      showAlert("Reset Password", check.message);
       return;
     }
 
@@ -61,11 +62,11 @@ export default function ForgotScreen() {
     setLoading(false);
 
     if (!updated) {
-      Alert.alert("Reset Password", "Could not update the password. Please try again.");
+      showAlert("Reset Password", "Could not update the password. Please try again.");
       return;
     }
 
-    Alert.alert("Password updated", "Your password has been changed. Please log in again.", [
+    showAlert("Password updated", "Your password has been changed. Please log in again.", [
       {
         text: "OK",
         onPress: () => router.replace("/auth/login"),

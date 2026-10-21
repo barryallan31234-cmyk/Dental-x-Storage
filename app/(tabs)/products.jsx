@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { showAlert } from "../../utils/notify.js";
 
 import {
   Alert,
@@ -52,7 +53,7 @@ export default function ProductsScreen() {
 
   function addProduct() {
     if (!name || !price || !stock) {
-      Alert.alert(
+      showAlert(
         "Missing information",
         "Please complete all fields."
       );
@@ -78,7 +79,7 @@ export default function ProductsScreen() {
   }
 
   function deleteProduct(id) {
-    Alert.alert(
+    showAlert(
       "Delete Product",
       "Are you sure you want to delete this product?",
       [

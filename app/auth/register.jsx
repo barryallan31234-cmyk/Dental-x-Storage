@@ -1,6 +1,7 @@
 ﻿import { useState } from "react";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { showAlert } from "../../utils/notify.js";
 
 import {
   Alert,
@@ -80,7 +81,7 @@ export default function RegisterScreen() {
     );
 
     if (!check.valid) {
-      Alert.alert("Validation", check.message);
+      showAlert("Validation", check.message);
       return;
     }
 
@@ -100,7 +101,7 @@ export default function RegisterScreen() {
 
     if (!saved) {
       setLoading(false);
-      Alert.alert("Error", "Could not save your account. Please try again.");
+      showAlert("Error", "Could not save your account. Please try again.");
       return;
     }
 
@@ -108,7 +109,7 @@ export default function RegisterScreen() {
 
     setTimeout(() => {
       setLoading(false);
-      Alert.alert("Success", "Account created! Please log in.", [
+      showAlert("Success", "Account created! Please log in.", [
         {
           text: "OK",
           onPress: () => router.replace("/auth/login"),
@@ -139,7 +140,7 @@ export default function RegisterScreen() {
 
           <AppInput
             label="First Name"
-            placeholder="Juan Dela Cruz"
+            placeholder="Juan"
             value={form.firstName}
             onChangeText={update("firstName")}
             error={errors.firstName}
